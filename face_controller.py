@@ -9,6 +9,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
+import cv2
 
 # These three lines are for suppressing warning messages.
 import tensorflow as tf
