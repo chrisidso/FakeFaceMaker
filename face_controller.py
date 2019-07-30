@@ -183,13 +183,22 @@ def fake_face_generator():
     # convert the output_im from floats into ints.
     result = output_im.astype(int)
     
-    return result
+    return image1, image2, result
 
 
 # So that we can run this from the command line.
-if __name__ == '__main__':    
-    plt.imshow( fake_face_generator() )
+if __name__ == '__main__': 
+    im1, im2, res = fake_face_generator()   
+    plt.imshow( im1 )
     plt.show()
+    plt.imshow( im2 )
+    plt.show()
+    plt.imshow( res )
+    plt.show()
+    
+    
+
+    
 
 
     
