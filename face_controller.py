@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 import cv2
+import scipy.misc
 
 # These three lines are for suppressing warning messages.
 import tensorflow as tf
@@ -52,6 +53,11 @@ def prepare_image(file):
     img_array = image.img_to_array(img)
     img_array_expanded_dims = np.expand_dims(img_array, axis=0)
     return keras.applications.mobilenet.preprocess_input(img_array_expanded_dims)
+
+# The face face images and the two images that are passed into Mr. Earl's code come out 
+# with their red and blue channels flipped.  Need to adjust these to properly view the images. 
+def bgr_to_rgb(im):
+    return im[:,:,::-1]   
 
 def clear_temp_folder():    
     for root, dirs, files in os.walk(image_folder):
@@ -184,12 +190,12 @@ def fake_face_generator():
     # convert the output_im from floats into ints.
     result = output_im.astype(int)
     
-    return image1, image2, result
+    return bgr_to_rgb(image1), bgr_to_rgb(image2), bgr_to_rgb(result)
 
 
 # So that we can run this from the command line.
 if __name__ == '__main__': 
-    im1, im2, res = fake_face_generator()   
+    im1, im2, res = fake_face_generator()    
     plt.imshow( im1 )
     plt.show()
     plt.imshow( im2 )
