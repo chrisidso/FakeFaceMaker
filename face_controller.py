@@ -195,7 +195,8 @@ def fake_face_generator():
 
 # So that we can run this from the command line.
 if __name__ == '__main__': 
-    im1, im2, res = fake_face_generator()    
+    im1, im2, res = fake_face_generator()
+    
     plt.imshow( im1 )
     plt.show()
     plt.imshow( im2 )
