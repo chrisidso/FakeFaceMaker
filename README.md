@@ -17,6 +17,8 @@ Items 3,4 and 5 were accomplished using code borrowed from Matthew Earl (stored 
 
 https://matthewearl.github.io/2015/07/28/switching-eds-with-python/
 
+Please note that he has a copyright on his code, and that his copyright notice has been included in the module containing his code (face_transformer.py).
+
 He walks the reader through what his code does and adds a link where you can download the complete code.   There is a predictor model he uses which he provides a handy link to and which is stored locally in the ‘predictor’ folder. 
 
 Fake Face Maker can be run by down loading the two python modules, and the models, predictor, and temp folders, and the jupyter notebook called “fake_face_maker_run_one.ipynb”  - all into the same directory.  
@@ -48,86 +50,15 @@ http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html
 
 This project proved to be more difficult than I thought it would be.   Along the way I encountered the following problems: 
 
-The download of the image files to my computer (prior to placing them in my s3 bucket) did not work the first time, because the images were in a partitioned and zipped download.  In order to unzip them one has to download all the partitions because the instructions for unzipping them is in the last partition.  
-
-I switched course twice in determining which model to use and how to arrange my image files to train the model.   Lost valuable time because of this. 
-
-The model I chose required its images to beof a specific size which was different than the size of the images I was using.    So I had to work out an efficient way to change the size of my images.
+The model I chose required its images to be of a specific size which was different than the size of the images I was using.  So I had to work out an efficient way to change the size of my images.
 
 I knew that I would have to be able to save my models once I trained them, so that the code I intended to write later would be able to load the models from a folder.   Saving my models was not a problem, but loading them back in was difficult because the usual ways to do that (model object’s load method, python’s pickle, python’s dill library) did not work.  I finally found a way to load my models back in.   
 
 Now (finally) I could train and save the three models I needed.  In testing the facial hair model I found that it did not work very well.  Facial hair is difficult to detect, it seems.
 The other two models worked nicely.
 
-By this time four days had elapsed.  
+To begin the process of making the fake face I wanted to download images one at a time and examine them.  But I could not figure out how to do that, so settled for downloading a bunch of image files to a folder, where I could apply some logic to choose two of them.
 
-To begin the process of making the fake face I need to download images one at a time and examine them.  But I could not figure out how to do that, so settled for downloading a bunch of image files to a folder, where I could apply some logic to choose two of them.
+Now I needed to get Mr. Earl’s code to work to complete the process, and I found that his code was incomplete.  But I got it to work in the end.
 
-Now I needed to get Mr. Earl’s code to work, to complete the process, and it was now Saturday afternoon.   
-There was a small error in his code (improper use of an operator).  A google search provided the fix. 
-
-After that his code ran but produced images that did not look right at all (no face discernable).    The problem turned out to be a step missing at the end of his code.   
-
-Then, during testing I found that Mr. Earl’s detector (the thing that finds the face in the images) does not always find a face, and throws an exception.  Added some code to catch the exception and handle it.  
-
-B
-B
-B
-B
-B
-B
-B
-B
-B
-
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
 
